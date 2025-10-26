@@ -12,11 +12,13 @@
   <br>
   <em>Analysing Openlane Structure</em>
 </p>
-If you like to view the directory structure →
-[click here](Files/Directory_Structure.txt)
-
+If you like to view the directory structure :
+<p>
+  <a href="https://github.com/Meenakshi-2627/Week-6_RISC-V_Tapeout_Program/blob/main/Day-1/Files/Directory_Structure.txt">click here</a>
+</p>
 
 ---
+
 
 ## Setting up and Synthesis
 
