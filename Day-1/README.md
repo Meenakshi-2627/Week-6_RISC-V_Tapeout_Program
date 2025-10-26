@@ -12,7 +12,8 @@
   <br>
   <em>Analysing Openlane Structure</em>
 </p>
-If you like to view the directory structure → [click here](./Files/Directory_Structure.txt)
+If you like to view the directory structure → [Click here](https://github.com/Meenakshi-2627/Week-6_RISC-V_Tapeout_Program/blob/main/Day-1/Files/Directory_Structure.txt)
+
 
 
 ---
@@ -23,9 +24,6 @@ If you like to view the directory structure → [click here](./Files/Directory_S
 ```bash
 export PDK_ROOT=/home/vsduser/Desktop/work/tools/openlane_working_dir/pdks
 ```
-<p align="center">
-  <img src="Images/export_pdk_root.png" alt="Export PDK Root">
-</p>
 
 **Explanation:** Sets the environment variable `PDK_ROOT` pointing to the Process Design Kit directory containing all the technology files.
 
@@ -35,9 +33,6 @@ export PDK_ROOT=/home/vsduser/Desktop/work/tools/openlane_working_dir/pdks
 ```bash
 cd ~/Desktop/work/tools/openlane_working_dir/openlane
 ```
-<p align="center">
-  <img src="Images/cd_openlane.png" alt="Navigate to OpenLane">
-</p>
 
 **Explanation:** Changes the current working directory to the OpenLane installation folder.
 
@@ -47,9 +42,6 @@ cd ~/Desktop/work/tools/openlane_working_dir/openlane
 ```bash
 alias docker='docker run -it -v $(pwd):/openLANE_flow -v $PDK_ROOT:$PDK_ROOT -e PDK_ROOT=$PDK_ROOT -u $(id -u $USER):$(id -g $USER) efabless/openlane:v0.21'
 ```
-<p align="center">
-  <img src="Images/docker_alias.png" alt="Docker Alias">
-</p>
 
 **Explanation:** Creates a shortcut command that runs OpenLane inside a Docker container with mounted volumes and user permissions.
 
@@ -59,9 +51,6 @@ alias docker='docker run -it -v $(pwd):/openLANE_flow -v $PDK_ROOT:$PDK_ROOT -e 
 ```bash
 cd designs
 ```
-<p align="center">
-  <img src="Images/cd_designs.png" alt="Navigate to Designs">
-</p>
 
 **Explanation:** Moves into the designs directory where all ASIC design projects are stored.
 
@@ -71,20 +60,17 @@ cd designs
 ```bash
 docker
 ```
-<p align="center">
-  <img src="Images/docker_run.png" alt="Docker Run">
-</p>
 
 **Explanation:** Executes the Docker container using the alias created, launching the OpenLane environment.
 
+<p align="center">
+  <img src="Images/setup.png" alt="Setup">
+</p>
 
 ### 6. Load OpenLane Package
 ```tcl
 % package require openlane 0.9
 ```
-<p align="center">
-  <img src="Images/package_require.png" alt="Package Require">
-</p>
 
 **Explanation:** Loads the OpenLane tool package version 0.9 in the Tcl interactive shell.
 
@@ -94,13 +80,14 @@ docker
 ```tcl
 % prep -design picorv32a
 ```
-<p align="center">
-  <img src="Images/prep_design.png" alt="Prepare Design">
-</p>
 
 **Explanation:** Prepares the design environment for `picorv32a` processor, setting up necessary files and configurations.
 
 ---
+
+<p align="center">
+  <img src="Images/docker_commands.png" alt="Docker Commands">
+</p>
 
 ### 8. Run Synthesis
 ```tcl
