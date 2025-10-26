@@ -12,7 +12,7 @@
   <br>
   <em>Analysing Openlane Structure</em>
 </p>
-If you like to view the directory structure → [click here](./Files/Directory_Structure)
+If you like to view the directory structure → [click here](./Files/Directory_Structure.txt)
 
 ---
 
