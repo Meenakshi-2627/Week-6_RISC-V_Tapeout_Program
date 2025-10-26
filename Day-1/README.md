@@ -1,74 +1,175 @@
-## Day 1 — Directory structure and OpenLane quick start
 
-<img src="Images/openlane_logo.png" alt="OpenLane logo" width="400" height="120" />
+# Day-1 of Week-6 RISC-V Tapeout Program
 
-Displayed at 400×120 px (replace `Images/openlane_logo.png` with a higher-resolution logo if you have one).
+<p align="center">
+  <img src="Images/openlane_logo.png" alt="OpenLane Logo" width="300" height="50">
+</p>
 
-### Directory structure
+## Directory Structure
 
-If you'd like to view the directory structure --> [click here](Files/Directory_Structure)
-
-> Note: The link above opens the `Files/Directory_Structure` file inside this `Day-1` folder.
-
----
-
-### Terminal commands (images expected)
-
-Below are the terminal commands you provided. Next to each command I list the image filename you should place under `Day-1/Images/` so the README can show the screenshots or illustrations.
-
-1) export PDK_ROOT=/home/vsduser/Desktop/work/tools/openlane_working_dir/pdks
-	- image: `Images/cmd_export_PDK_ROOT.png`
-	- explanation: Sets the `PDK_ROOT` environment variable to the path where the process design kits (PDKs) live. This tells OpenLane, PDK tools, and containerized flows where to find technology files (GDS, LEF, liberty, etc.).
-	- imaginative note: Picture a toolbox location tag—this command pins the PDK toolbox to a known shelf so the flow can fetch the right parts.
-
-2) cd ~/Desktop/work/tools/openlane_working_dir/openlane
-	- image: `Images/cmd_openlane_dir.png`
-	- explanation: Moves your shell into the OpenLane repository directory. From here you invoke the flow scripts and run the environment that expects the OpenLane tree.
-	- imaginative note: This is like stepping onto the factory floor before turning on the machines.
-
-3) alias docker='docker run -it -v $(pwd):/openLANE_flow -v $PDK_ROOT:$PDK_ROOT -e PDK_ROOT=$PDK_ROOT -u $(id -u $USER):$(id -g $USER) efabless/openlane:v0.21'
-	- image: `Images/cmd_alias_docker.png`
-	- explanation: Creates a shell alias so the `docker` command actually runs the OpenLane container with the current directory mounted at `/openLANE_flow`, the `PDK_ROOT` mounted as well, and the environment variable passed through. It also maps the container user to your host UID/GID so generated files have correct ownership.
-	- imaginative note: Think of it as wiring the container into your project folder and telling it who the owner is.
-
-4) docker
-	- image: `Images/cmd_docker.png`
-	- explanation: Runs the alias above (starts the OpenLane container interactively). Once started, you'll be inside the container with the OpenLane flow available.
-	- imaginative note: Entering the workshop—the tools and scripts become available inside a self-contained environment.
-
-5) cd designs
-	- image: `Images/cmd_cd_designs.png`
-	- explanation: Switch into the `designs` folder inside the OpenLane flow where you create or import specific designs to run through the flow.
-	- imaginative note: Going to the specific workbench for each chip project.
-
-6) %package require openlane 0.9
-	- image: `Images/cmd_tcl_package_require_openlane_0_9.png`
-	- explanation: A Tcl command used within the OpenLane TCL environment (or `flow.tcl`) to ensure the `openlane` package v0.9 is available. It locks the flow to a compatible package version.
-	- imaginative note: Like checking that the correct model of the machine is installed before you start.
-
-7) %prep -design picorv32a
-	- image: `Images/cmd_tcl_prep_design_picorv32a.png`
-	- explanation: Prepares the `picorv32a` design inside the OpenLane environment—fetches sources, runs initial setup, and arranges the project structure the flow expects.
-	- imaginative note: Prepping the blueprint and raw materials for assembly.
-
-8) %run_synthesis
-	- image: `Images/cmd_tcl_run_synthesis.png`
-	- explanation: Starts the synthesis stage of the flow. The toolchain converts RTL (Verilog) into a gate-level netlist mapped to the chosen PDK.
-	- imaginative note: The design's skeleton is forged into a machine language blueprint.
+<p align="center">
+  <img src="Images/opening_directory.png" alt center="Analysing Openlane Directory">
+  <br>
+  <em>Analysing Openlane Structure</em>
+</p>
+If you like to view the directory structure → [click here](./Files/Directory_Structure)
 
 ---
 
-### How to add images
+## Setting up and Synthesis
 
-1. Place your screenshots or image files in `Day-1/Images/` with the exact filenames listed above.
-2. Replace `Images/openlane_logo.png` with the OpenLane logo file.
-3. If you want the README to show the command images inline, open the README and add Markdown image lines like:
+### 1. Setting PDK Root Path
+```bash
+export PDK_ROOT=/home/vsduser/Desktop/work/tools/openlane_working_dir/pdks
+```
+<p align="center">
+  <img src="Images/export_pdk_root.png" alt="Export PDK Root">
+</p>
 
-	<img src="Images/cmd_export_PDK_ROOT.png" alt="export PDK_ROOT" width="900" />
-
-4. Commit and push the images so collaborators can view them on GitHub.
+**Explanation:** Sets the environment variable `PDK_ROOT` pointing to the Process Design Kit directory containing all the technology files.
 
 ---
 
-If you'd like, I can also embed the command screenshots into this README now (using the filenames above) once you upload them into `Day-1/Images/`.
+### 2. Navigate to OpenLane Directory
+```bash
+cd ~/Desktop/work/tools/openlane_working_dir/openlane
+```
+<p align="center">
+  <img src="Images/cd_openlane.png" alt="Navigate to OpenLane">
+</p>
 
+**Explanation:** Changes the current working directory to the OpenLane installation folder.
+
+---
+
+### 3. Docker Alias Setup
+```bash
+alias docker='docker run -it -v $(pwd):/openLANE_flow -v $PDK_ROOT:$PDK_ROOT -e PDK_ROOT=$PDK_ROOT -u $(id -u $USER):$(id -g $USER) efabless/openlane:v0.21'
+```
+<p align="center">
+  <img src="Images/docker_alias.png" alt="Docker Alias">
+</p>
+
+**Explanation:** Creates a shortcut command that runs OpenLane inside a Docker container with mounted volumes and user permissions.
+
+---
+
+### 4. Navigate to Designs Folder
+```bash
+cd designs
+```
+<p align="center">
+  <img src="Images/cd_designs.png" alt="Navigate to Designs">
+</p>
+
+**Explanation:** Moves into the designs directory where all ASIC design projects are stored.
+
+---
+
+### 5. Launch Docker Container
+```bash
+docker
+```
+<p align="center">
+  <img src="Images/docker_run.png" alt="Docker Run">
+</p>
+
+**Explanation:** Executes the Docker container using the alias created, launching the OpenLane environment.
+
+
+### 6. Load OpenLane Package
+```tcl
+% package require openlane 0.9
+```
+<p align="center">
+  <img src="Images/package_require.png" alt="Package Require">
+</p>
+
+**Explanation:** Loads the OpenLane tool package version 0.9 in the Tcl interactive shell.
+
+---
+
+### 7. Prepare Design
+```tcl
+% prep -design picorv32a
+```
+<p align="center">
+  <img src="Images/prep_design.png" alt="Prepare Design">
+</p>
+
+**Explanation:** Prepares the design environment for `picorv32a` processor, setting up necessary files and configurations.
+
+---
+
+### 8. Run Synthesis
+```tcl
+% run_synthesis
+```
+<p align="center">
+  <img src="Images/synthesis_success.png" alt="Synthesis Successfull">
+</p>
+
+**Explanation:** Executes the logic synthesis step, converting RTL code to gate-level netlist using the specified technology library.
+
+---
+
+# Task: Calculation of Flop Ratio and DFF %
+
+## Objective
+To evaluate the sequential logic content in the synthesized design.
+
+---
+
+## Given Data
+
+| Parameter | Value |
+|-----------|-------|
+| **Total Cells** | 15134 |
+| **DFF Cells** | 1613 (from `sky130_fd_sc_hd__dfxtp_2`) |
+
+---
+
+## Screenshots from Synthesis Report
+
+### Total Cells Count
+<p align="center">
+  <img src="Images/cells_count.png" alt="Total Cells Count">
+</p>
+
+### DFF Cells Count
+<p align="center">
+  <img src="Images/dfxtp.png" alt="DFF Cells Count">
+</p>
+
+---
+
+## Calculations
+
+### ➤ Flop Ratio
+
+```
+Flop Ratio = DFFs / Total Cells
+           = 1613 / 15134
+           ≈ 0.1065
+```
+
+---
+
+### ➤ DFF Percentage
+
+```
+DFF % = (DFFs / Total Cells) × 100
+      = (1613 / 15134) × 100
+      ≈ 10.65%
+```
+
+---
+
+## Result
+
+- **Flop Ratio:** `0.1065`
+- **DFF Percentage:** `10.65%`
+
+This indicates that approximately **10.65%** of the total cells in the design are flip-flops, representing the sequential logic component of the synthesized `picorv32a` design.
+
+---
