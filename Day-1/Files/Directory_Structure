@@ -1,0 +1,58 @@
+/home/vsduser/Desktop/work/tools/openlane_working_dir
+├── openlane                                      Main OpenLane flow directory (EDA automation)
+│   ├── AUTHORS.md                                Contributor details
+│   ├── Makefile                                  Build/Run automation for OpenLane
+│   ├── flow.tcl                                  Core TCL script that defines the complete ASIC flow
+│   ├── regression_results                        Stores results of regression test runs
+│   ├── configuration                             Stores general configuration templates
+│   ├── docker_build                              Contains Docker build files for OpenLane environment
+│   │   ├── docker                                Docker-related scripts and setup files
+│   │   ├── Dockerfile                            Definition of OpenLane's Docker image
+│   │   └── tar                                   Compressed archives used during Docker builds
+│   ├── docs                                      OpenLane documentation and usage instructions
+│   ├── scripts                                   Contains helper scripts used in each design flow stage
+│   │   ├── openroad                              TCL/Python scripts used by the OpenROAD tool
+│   │   ├── magic                                 DRC/LVS and layout-related scripts
+│   │   ├── report                                Report generation utilities
+│   │   ├── utils                                 Miscellaneous helper utilities
+│   │   └── synth_exp                             Synthesis experiment scripts (Yosys-related)
+│   ├── designs                                   Folder containing all chip design projects
+│   │   ├── picorv32a                             RISC-V CPU core (used as case study)
+│   │   │   ├── config.tcl                        Design configuration file for OpenLane run
+│   │   │   ├── src                               RTL design files for the core
+│   │   │   │   ├── picorv32a.v                   Verilog source code of RISC-V CPU
+│   │   │   │   └── picorv32a.sdc                 Timing constraints file
+│   │   │   ├── sky130A_sky130_fd_sc_hd_config.tcl    Config for High-Density cells
+│   │   │   ├── sky130A_sky130_fd_sc_hs_config.tcl    Config for High-Speed cells
+│   │   │   ├── sky130A_sky130_fd_sc_hdll_config.tcl  Config for Low-Leakage cells
+│   │   │   ├── sky130A_sky130_fd_sc_ls_config.tcl    Config for Low-Speed cells
+│   │   │   └── sky130A_sky130_fd_sc_ms_config.tcl    Config for Medium-Speed cells
+│   │   └── aes, sha3, md5, usb ...               Other reference designs provided by OpenLane
+│   └── run_designs.py                            Script to execute OpenLane runs via command line
+│
+├── pdks                                          Process Design Kit files (Skywater 130nm node)
+│   ├── skywater-pdk                              Original SkyWater PDK repository
+│   │   ├── libraries                             Device and primitive cell definitions
+│   │   ├── scripts                               Setup/utility scripts
+│   │   └── third_party                           Dependencies used by Skywater-PDK
+│   ├── open_pdks                                 Converts raw PDKs into open-source-compatible formats
+│   │   ├── sky130                                Build recipes for Sky130A open variant
+│   │   ├── scripts                               Installation and configuration scripts
+│   │   └── sources                               Source references for each PDK component
+│   └── sky130A                                   Fully prepared PDK variant for OpenLane
+│       ├── libs.ref                              Reference libraries (LEF, GDS, LIB, timing models)
+│       │   ├── sky130_fd_sc_hd                   High-density standard cell library
+│       │   ├── sky130_fd_sc_hs                   High-speed standard cell library
+│       │   ├── sky130_fd_io                      I/O pad cells
+│       │   └── sky130_sram_macros                SRAM memory blocks
+│       └── libs.tech                             Tool-specific technology files
+│           ├── magic                             Technology files for Magic layout tool
+│           ├── netgen                            LVS setup files for Netgen
+│           ├── ngspice                           Analog models and simulation setup files
+│           ├── openlane                          Layer & routing definitions used in OpenLane
+│           ├── qflow                             Place-and-route setup for Qflow
+│           ├── irsim                             Switch-level simulation parameter files
+│           ├── xcircuit                          Symbol and schematic configuration for Xcircuit
+│           └── xschem                            Schematic symbols and test setups for Xschem
+│
+└── openlane_old                                  Backup of previous OpenLane installation
