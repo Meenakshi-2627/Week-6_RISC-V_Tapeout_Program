@@ -2,7 +2,7 @@
 # Day-1 of Week-6 RISC-V Tapeout Program
 
 <p align="center">
-  <img src="Images/openlane_logo.png" alt="OpenLane Logo" width="300" height="50">
+  <img src="Images/openlane_logo.png" alt="OpenLane Logo" width="400" height="100">
 </p>
 
 ## Directory Structure
@@ -12,8 +12,8 @@
   <br>
   <em>Analysing Openlane Structure</em>
 </p>
-If you like to view the directory structure → [Click here](https://github.com/Meenakshi-2627/Week-6_RISC-V_Tapeout_Program/blob/main/Day-1/Files/Directory_Structure.txt)
-
+If you like to view the directory structure →
+[click here](./Files/Directory_Structure.txt)
 
 
 ---
