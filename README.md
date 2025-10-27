@@ -24,6 +24,13 @@
 This week focuses on the practical implementation of physical design using the OpenLane flow with Sky130 PDK. The program covers the entire backend flow starting from a synthesized netlist of the RISC-V based PicoRV32a processor core to the final GDSII layout ready for fabrication. Participants will work with industry-standard open-source EDA tools and learn optimization techniques essential for modern chip design.
 
 ---
+## Tools and Resources
+
+**OpenLane:** [https://github.com/efabless/openlane](https://github.com/efabless/openlane)
+
+OpenLane is an automated RTL to GDSII flow based on several components including OpenROAD, Yosys, Magic, Netgen, CVC, KLayout and a number of custom scripts for design exploration and optimization.
+
+---
 
 ## Daily Progress
 
@@ -40,3 +47,5 @@ This week focuses on the practical implementation of physical design using the O
 [Week-5 RISC-V Tapeout Program](https://github.com/Meenakshi-2627/Week-5_RISC-V_Tapeout_Program)
 
 ---
+
+
