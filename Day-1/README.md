@@ -9,8 +9,15 @@
 ## Table of Contents 
 - [Theory](#theory)
 - [Lab](#lab)
+- [Task](#task-calculation-of-flop-ratio-and-dff-)
 ---
 ## Theory
+
+  - [Introduction to QFN-48 Package, Chip, Pads, Core, Die and IPs](#introduction-to-qfn-48-package-chip-pads-core-die-and-ips)
+  - [Introduction to RISC-V](#introduction-to-risc-v)
+  - [Simplified RTL2GDS Flow](#simplified-rtl2gds-flow)
+  - [OpenLANE Detailed ASIC Design Flow](#introduction-to-openlane-detailed-asic-design-flow)
+
 
 **Introduction to QFN-48 Package, Chip, Pads, Core, Die and IPs** :
 
@@ -204,6 +211,114 @@ OpenLANE integrates multiple open-source tools into a cohesive automated flow:
 --- 
 
 ## Lab
+
+  - [Environment Setup Guide](#environment-setup-guide)
+  - [Directory Structure](#directory-structure)
+  - [Synthesis Process](#setting-up-and-synthesis)
+<details>
+<summary><strong>📘 Environment Setup Guide (Click to Expand)</strong></summary>
+
+---
+
+# Environment Setup Guide
+
+## Overview
+
+This guide will walk you through setting up the OpenLANE environment for the RISC-V Tapeout Program using Oracle VirtualBox.
+
+---
+
+## Method 1: Using Pre-configured VDI File (Recommended)
+
+### Step 1: Download Required Files
+
+Download the OpenLANE VDI file from the link below:
+
+https://vsd-labs.sgp1.cdn.digitaloceanspaces.com/vsd-labs/openlane.zip
+
+sql
+Copy code
+
+### Step 2: Extract the Downloaded File
+
+Unzip the downloaded `openlane.zip` file to extract the `.vdi` (Virtual Disk Image) file.
+
+### Step 3: Create New Virtual Machine in Oracle VirtualBox
+
+1. Open **Oracle VirtualBox**
+2. Click on **"New"** to create a new virtual machine
+3. Configure the following settings:
+   - **Name:** OpenLANE_Environment (or any preferred name)
+   - **RAM:** Allocate minimum 4GB (4096 MB) or more based on your system capacity
+   - **CPU Cores:** Allocate 2 or more cores for better performance
+   - **Storage:** Skip creating a new virtual hard disk for now
+
+4. Click **"Finish"** to complete the initial setup
+
+### Step 4: Attach the OpenLANE VDI File
+
+1. Select the newly created virtual machine
+2. Go to **Settings → Storage**
+3. Under **Storage Devices**, locate **Controller: IDE**
+4. Click on **"Empty"** under Controller: IDE
+5. On the right side, click the **disk icon** next to "Optical Drive"
+6. Choose **"Choose/Create a Virtual Hard Disk"**
+7. Click **"Add"** and browse to select the extracted `openlane.vdi` file
+8. Select the `openlane.vdi` file and click **"Choose"**
+9. Click **"OK"** to save the settings
+
+### Step 5: Start the Virtual Machine
+
+1. Select the virtual machine from the VirtualBox manager
+2. Click **"Start"** to boot the environment
+3. The OpenLANE environment will be ready to use with all pre-installed tools
+
+---
+
+## Method 2: Building from Source (Alternative Method)
+
+This method involves cloning the necessary repositories and building the PDKs from source.
+
+### Step 1: Clone the Required Repository
+
+To get started, clone the required files and project setup from the GitHub repository:
+
+```bash
+git clone https://github.com/fayizferosh/soc-design-and-planning-nasscom-vsd
+```
+This repository contains all the necessary resources, scripts, and design files to follow along with the OpenLANE-based Advanced Physical Design flow, including the picorv32a case study.
+
+Step 2: Building PDKs from Source
+To build and install the OpenPDKs (Process Design Kits) for the Sky130 process node, follow these steps:
+
+```bash
+git clone https://github.com/RTimothyEdwards/open_pdks.git  
+cd open_pdks  
+./configure --enable-sky130-pdk  
+make  
+sudo make install
+```
+>❗ Note: Before building open_pdks, please ensure you have Magic 8.3.530 or later installed and available in your path, as earlier versions may lack the required CIF interfaces.
+
+**Verification**  :  
+Once the environment is set up, verify the installation by checking:
+
+- OpenLANE installation directory
+
+- PDK files in the designated path
+
+- All required tools are accessible from terminal
+
+**Troubleshooting**
+- If the virtual machine fails to boot, ensure virtualization is enabled in your BIOS settings
+
+- If storage issues occur, verify sufficient disk space is allocated
+
+For build errors in Method 2, ensure all dependencies are installed
+
+ </details> 
+
+---
 
 ## Directory Structure
 
