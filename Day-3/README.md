@@ -82,10 +82,10 @@ A  B │ Y                    VDD
 - Via Layers (vertical connections)
 
 **Design Checklist:**
-✅ Follow ALL DRC rules
-✅ Minimize cell area
-✅ VDD at top, GND at bottom
-✅ Grid alignment
+✅ Follow ALL DRC rules   
+✅ Minimize cell area   
+✅ VDD at top, GND at bottom     
+✅ Grid alignment  
 ✅ DRC + LVS verification
 
 ### Phase 3: Characterization
@@ -251,34 +251,28 @@ ext2spice
 *Figure 4: Edited SPICE netlist in GVIM with proper simulation setup*
 
 ```spice
-* SPICE3 netlist for sky130_inv
+
 .option scale=0.01u
 
 .include ./libs/pshort.lib
 .include ./libs/nshort.lib
 
-* Subcircuit
 M1000 Y A VPWR VPWR pshort_model.0 w=37 l=23
 M1001 Y A VGND VGND nshort_model.0 w=35 l=23
 
-* Power supplies
 VDD VPWR 0 3.3V
 VSS VGND 0 0V
 
-* Input stimulus
 Va A VGND PULSE(0V 3.3V 0 0.1ns 0.1ns 2ns 4ns)
 
-* Load capacitance
 C_load Y VGND 2fF
 
-* Transient analysis
 .tran 0.01ns 20ns
 
 .control
 run
 plot V(A) V(Y)
 .endc
-
 .end
 ```
 
@@ -293,7 +287,7 @@ ngspice sky130_inv.spice
 
 **In ngspice:**
 ```
-ngspice 1 -> plot y vs time a
+ngspice 1 -> plot V vs time a
 ```
 
 ![NGSPICE Simulation](./Images/image6.png)
@@ -394,7 +388,7 @@ tech load sky130A.tech
 drc check
 drc why
 ```
-
+![Magic Layout Window](./Images/image7.png)
 ---
 
 ## Advanced Topics
@@ -440,34 +434,34 @@ drc why
 
 ### Technical Skills Developed
 
-✅ **Layout Design:** Magic tool proficiency, layer stack understanding
-✅ **Circuit Simulation:** NGSPICE setup and waveform analysis
-✅ **Characterization:** Timing parameter measurement and calculation
-✅ **DRC Debugging:** Tech file modification and rule validation
+✅ **Layout Design:** Magic tool proficiency, layer stack understanding  
+✅ **Circuit Simulation:** NGSPICE setup and waveform analysis  
+✅ **Characterization:** Timing parameter measurement and calculation  
+✅ **DRC Debugging:** Tech file modification and rule validation  
 ✅ **File Formats:** LEF, .lib, GDSII, SPICE understanding
 
 ### Design Flow Mastery
 
-✅ **Complete workflow:** Layout → Extract → Simulate → Characterize
-✅ **Verification:** DRC, LVS, timing checks
-✅ **Tool Integration:** Magic + NGSPICE + characterization
+✅ **Complete workflow:** Layout → Extract → Simulate → Characterize  
+✅ **Verification:** DRC, LVS, timing checks  
+✅ **Tool Integration:** Magic + NGSPICE + characterization  
 ✅ **Industry practices:** Standard methodologies and deliverables
 
 ### Critical Concepts
 
-✅ **Drive strength variants** balance speed/area/power
-✅ **PVT corners** ensure robust design across conditions
-✅ **Parasitic extraction** captures real-world effects
-✅ **Multi-dimensional LUTs** model complex timing behavior
-✅ **Design rules** ensure manufacturability
+✅ **Drive strength variants** balance speed/area/power  
+✅ **PVT corners** ensure robust design across conditions  
+✅ **Parasitic extraction** captures real-world effects  
+✅ **Multi-dimensional LUTs** model complex timing behavior   
+✅ **Design rules** ensure manufacturability   
 
 ---
 
 ## Next Steps - Day 4 Preview
 
-📌 Pre-Layout Timing Analysis
-📌 Static Timing Analysis (STA)
-📌 Clock Tree Synthesis (CTS)
+📌 Pre-Layout Timing Analysis     
+📌 Static Timing Analysis (STA)   
+📌 Clock Tree Synthesis (CTS)   
 📌 Cell Integration into OpenLANE Flow
 
 ---
